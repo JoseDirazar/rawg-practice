@@ -1,8 +1,18 @@
 import Image from "next/image";
 
-const Card = ({ game }: { game: any }) => {
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+/* bg-[#202020] */
+const GameCard = ({ game }: { game: any }) => {
   return (
-    <div className="flex flex-col my-3 bg-[#202020] rounded-xl">
+    <Card className="flex flex-col my-3 bg-secondary rounded-xl">
+      <CardHeader>
       <Image
         src={game.background_image}
         alt={game.name}
@@ -10,15 +20,17 @@ const Card = ({ game }: { game: any }) => {
         width={300}
         className="rounded-t-xl bg-cover w-full overflow-hidden"
         />
+
+      </CardHeader>
         <div className="m-3">
         <p className="px-2 font-bold text-2xl">{game.name}</p>
         <p className="px-1">{game.rating}</p>
         </div>
-    </div>
+    </Card>
   );
 };
 
-export default Card;
+export default GameCard;
 
 /*  {
       id: 3498,

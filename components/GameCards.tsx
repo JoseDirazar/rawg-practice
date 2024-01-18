@@ -1,5 +1,5 @@
 import { landingGamesPage } from "@/actions/langing-games";
-import Card from "./Card";
+import GameCard from "./Card";
 
 const GameCards = async ({query}: {query: string}) => {
 
@@ -11,7 +11,7 @@ const GameCards = async ({query}: {query: string}) => {
       <div className="flex flex-col flex-wrap w-full max-h-[190vh] gap-x-2">
       
           {games.map((game: any) => (
-            <Card key={game.slug} game={game} />
+            <GameCard key={game.slug} game={game} />
           ))}
        
       </div>

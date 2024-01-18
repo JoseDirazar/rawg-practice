@@ -1,4 +1,5 @@
 import Search from "./Search";
+import { ThemeToggle } from "./ui/theme-toggle";
 
 export default function Navbar() {
   return (
@@ -8,8 +9,7 @@ export default function Navbar() {
         </div>
         <Search placeholder="Buscar juegos"/>
         <div className="bg-indigo-800 ml-4 w-[249.5px] h-[60px]">
-            <div></div>
-            <div></div>
+            <ThemeToggle />
         </div>
     </nav>
   )
