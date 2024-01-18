@@ -1,27 +1,22 @@
-import GameCards  from '../../components/GameCards'
+import GameCards from "../../components/GameCards";
+import { Suspense } from "react";
 
-export default async function Home() {
-  const landingGamesPage = async () => {
-    const response = await fetch(`https://api.rawg.io/api/games?key=${process.env.NEXT_PUBLIC_API_KEY}&page=1`).then(res => res.json())
-    const response2 = await fetch(`https://api.rawg.io/api/games?key=${process.env.NEXT_PUBLIC_API_KEY}&page=2`).then(res => res.json())
-    const response3 = await fetch(`https://api.rawg.io/api/games?key=${process.env.NEXT_PUBLIC_API_KEY}&page=3`).then(res => res.json())
-    const response4 = await fetch(`https://api.rawg.io/api/games?key=${process.env.NEXT_PUBLIC_API_KEY}&page=4`).then(res => res.json())
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: { search: string };
+}) {
+  const search = searchParams?.search || ''
 
-    return {
-      col1: [...response?.results],
-      col2: [ ...response2?.results],
-      col3: [...response3?.results],
-      col4: [...response4?.results],
-      }
-  }
-  
-  const {col1, col2, col3, col4}= await landingGamesPage()
 
   return (
-   <div className='bg-inherit'>
-    <GameCards col1={col1} col2={col2} col3={col3} col4={col4} />
-   </div>
-  )
+    <div className="bg-inherit">
+      <Suspense key={search} fallback={<div>Loading...</div>}>
+      <GameCards query={search} />
+
+      </Suspense>
+    </div>
+  );
 }
 
 /*  count: 861692,
@@ -53,7 +48,30 @@ export default async function Home() {
       platforms: [Array],
       parent_platforms: [Array],
       genres: [Array],
-      stores: [Array],
+      stores: [
+                      {
+                        id: 290375,
+                        store: {
+                           id: 3,
+                           name: 'PlayStation Store',
+                           slug: 'playstation-store',
+                           domain: 'store.playstation.com',
+                           games_count: 7878,
+                           image_background: 'https://media.rawg.io/media/games/157/15742f2f67eacff546738e1ab5c19d20.jpg'
+                         }
+                       },
+                       {
+                         id: 438095,
+                         store: {
+                           id: 11,
+                           name: 'Epic Games',
+                           slug: 'epic-games',
+                           domain: 'epicgames.com',
+                           games_count: 1309,
+                           image_background: 'https://media.rawg.io/media/games/021/021c4e21a1824d2526f925eff6324653.jpg'
+                         }
+                       }
+                       ...],
       clip: null,
       tags: [Array],
       esrb_rating: [Object],
