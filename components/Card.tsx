@@ -11,8 +11,7 @@ import {
 /* bg-[#202020] */
 const GameCard = ({ game }: { game: any }) => {
   return (
-    <Card className="flex flex-col my-3 bg-secondary rounded-xl">
-      <CardHeader>
+    <Card className="group flex flex-col my-4 mx-1 bg-secondary rounded-xl border-none max-w-[400px] hover:scale-125 transition-transform">
       <Image
         src={game.background_image}
         alt={game.name}
@@ -20,12 +19,13 @@ const GameCard = ({ game }: { game: any }) => {
         width={300}
         className="rounded-t-xl bg-cover w-full overflow-hidden"
         />
-
-      </CardHeader>
-        <div className="m-3">
-        <p className="px-2 font-bold text-2xl">{game.name}</p>
-        <p className="px-1">{game.rating}</p>
-        </div>
+        <CardContent className="py-2">
+        <p className="font-bold text-3xl">{game.name}</p>
+        <p className="py-2 text-xl">{game.rating}</p>
+        </CardContent>
+        <CardFooter className="hidden group-hover:animate-accordion-down group-hover:block" >
+        {game.reviews_text_count}
+        </CardFooter>
     </Card>
   );
 };
