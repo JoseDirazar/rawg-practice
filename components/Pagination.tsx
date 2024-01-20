@@ -12,9 +12,10 @@ export default function PaginationGames({ page }: { page: number }) {
   return (
     <Pagination className="py-3">
       <PaginationContent>
-        <PaginationItem>
+        <PaginationItem className="bg-secondary rounded-md">
           {page > 1 ? (
-            <PaginationPrevious
+            <PaginationPrevious 
+              
               href={{
                 pathname: "/",
                 query: { page: page - 1 },
@@ -81,7 +82,7 @@ export default function PaginationGames({ page }: { page: number }) {
         <PaginationItem>
           <PaginationEllipsis />
         </PaginationItem>
-        <PaginationItem>
+        <PaginationItem className="bg-secondary rounded-md">
           <PaginationNext
             href={{
               pathname: "/",

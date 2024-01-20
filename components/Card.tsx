@@ -8,6 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import GameCarousel from '@/components/Carousel'
+
 import { SiPlaystation } from "react-icons/si";
 import { SiSteam, SiWindows10, SiEpicgames, SiXbox  } from "react-icons/si";
 
@@ -16,7 +18,7 @@ const GameCard = ({ game }: { game: any }) => {
   const stores = game?.stores?.map((store: any) => {
     return store.store.name;
   });
-
+  const screenshots = game?.short_screenshots.map((image: any) => image.image)
   return (
     <Card className="group last:mb-0 flex flex-1 flex-col my-4 mx-1 bg-secondary rounded-xl overflow-visible hover:rounded-b-none border-none min-w-[270px] max-w-[400px] hover:scale-110 hover:after:transition-none transition-transform">
       {game.background_image && (
@@ -25,9 +27,10 @@ const GameCard = ({ game }: { game: any }) => {
           alt={game.name}
           height={200}
           width={300}
-          className="rounded-t-xl bg-cover w-full"
+          className="rounded-t-xl bg-cover w-full group-hover:hidden"
         />
-      )}
+        )}
+        <GameCarousel screenshots={screenshots}/>
 
       <CardContent className="py-3 flex flex-col  pl-2">
         <div className="flex items-center gap-x-2">
@@ -52,7 +55,7 @@ const GameCard = ({ game }: { game: any }) => {
         <p className="font-bold text-xl mt-2">{game.name}</p>
         <p className="py-2 text-xl">{game.rating}</p>
       </CardContent>
-      <CardFooter className="hidden absolute group-hover:block z-10 -bottom-[118px] w-full bg-inherit rounded-b-xl overflow-hidden">
+      <CardFooter className="hidden absolute group-hover:inline-block z-50 -bottom-[118px] w-full bg-inherit rounded-b-xl overflow-clip">
         <p className="">{game.reviews_text_count}</p>
         <p className="">{game.reviews_text_count}</p>
         <p className="">{game.reviews_text_count}</p>
