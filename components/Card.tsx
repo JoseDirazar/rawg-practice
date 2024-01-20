@@ -33,21 +33,21 @@ const GameCard = ({ game }: { game: any }) => {
 
       <CardContent className="py-3 flex flex-col  pl-2">
         <div className="flex items-center gap-x-2">
-         {stores.map((store: any) => {
+         {stores.map((store: any, key: number) => {
           if (store === "PlayStation Store") {
-            return <SiPlaystation size={20} />
+            return <SiPlaystation key={key} size={20} />
           }
           if (store === "Xbox Store" || store === 'Xbox 360 Store') {
-            return <SiXbox size={18} />
+            return <SiXbox key={key} size={18} />
           }
           if (store === "Steam") {
-            return <SiSteam size={20} />
+            return <SiSteam key={key} size={20} />
           }
           if (store === "PC") {
-            return <SiWindows10 size={20} />
+            return <SiWindows10 key={key} size={20} />
           }
           if (store === "Epic Games") {
-            return <SiEpicgames size={20} />
+            return <SiEpicgames key={key} size={20} />
           }
          })}
         </div>
