@@ -20,7 +20,7 @@ const GameCards = async ({ query, page }: { query: string; page: number }) => {
     <div className="w-full min-w-[70vh] ">
       <p className=" text-7xl mt-1 font-bold">Top picks</p>
       <PaginationGames page={page} />
-      <div className="flex flex-col align-bottom flex-wrap  gap-x-2 max-h-[150vh]">
+      <div className="grid grid-cols-4 grid-rows-7 gap-x-2 max-h-[270vh]">
         {games.map((game: any) => (
           <GameCard key={game.slug} game={game} />
         ))}
