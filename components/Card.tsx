@@ -20,7 +20,7 @@ const GameCard = ({ game }: { game: any }) => {
   });
   const screenshots = game?.short_screenshots.map((image: any) => image.image)
   return (
-    <Card className="group last:mb-0 flex flex-1 flex-col my-4 mx-1 bg-secondary rounded-xl overflow-visible hover:rounded-b-none border-none min-w-[270px] max-w-[400px] hover:scale-125 hover:after:transition-none transition-transform">
+    <Card className="group last:mb-0 flex flex-1 flex-col my-4 mx-1 bg-secondary rounded-xl overflow-visible hover:rounded-b-none border-none min-w-[270px] max-w-[400px] hover:scale-125 shadow hover:drop-shadow-2xl transition-transform">
       {game.background_image && (
         <Image
           src={game.background_image}
