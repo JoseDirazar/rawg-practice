@@ -1,6 +1,3 @@
-"use client";
-import * as React from "react";
-
 
 import {
   Carousel,
@@ -19,17 +16,17 @@ export default function GameCarousel({
 }) {
 
   return (
-    <div className="hidden group-hover:block rounded-t-xl overflow-hidden max-h-[288px]">
+    <div className="hidden group-hover:block rounded-t-xl overflow-hidden">
       <Carousel className="w-full ">
         <CarouselPrevious className="absolute left-0 top-1/2 z-10 hidden group-hover:flex items-center justfy-center bg-white/20 border-none hover:bg-white/50" />
-        <CarouselContent className="max-h-[300px]">
+        <CarouselContent className="">
           {screenshots.map((screenshot, index) => (
             <CarouselItem key={index + screenshot} className="w-full m-0 p-0">
               <Image
                 src={screenshot}
                 alt={screenshot}
-                height={384}
-                width={384}
+                height={288}
+                width={600}
                 className="bg-cover p-0 m-0 w-full"
               />
             </CarouselItem>

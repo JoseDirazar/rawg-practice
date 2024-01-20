@@ -5,7 +5,7 @@ import PaginationGames from "./Pagination";
 const GameCards = async ({ query, page }: { query: string; page: number }) => {
   let games: any = await landingGamesPage(query, page);
 
-  if (!games) {
+  if (games.length === 0) {
     return (
       <div className="w-auto">
         <div className="mx-4">New and trending</div>
@@ -20,7 +20,7 @@ const GameCards = async ({ query, page }: { query: string; page: number }) => {
     <div className="w-full min-w-[70vh] ">
       <p className=" text-7xl mt-1 font-bold">Top picks</p>
       <PaginationGames page={page} />
-      <div className="grid grid-cols-4 grid-rows-7 gap-x-2 max-h-[270vh]">
+      <div className="flex flex-col flex-wrap gap-x-2 max-h-[270vh]">
         {games.map((game: any) => (
           <GameCard key={game.slug} game={game} />
         ))}
