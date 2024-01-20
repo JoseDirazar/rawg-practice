@@ -9,56 +9,54 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { SiPlaystation } from "react-icons/si";
-import { SiXbox } from "react-icons/si";
-import { SiSteam, SiWindows10, SiEpicgames } from "react-icons/si";
+import { SiSteam, SiWindows10, SiEpicgames, SiXbox  } from "react-icons/si";
 
 /* bg-[#202020] */
 const GameCard = ({ game }: { game: any }) => {
-  console.log(game.stores)
-  const stores = game.stores.map((store: any) => {
-    return store.store.name
-  })
-  console.log('STORES::',stores)
+  const stores = game?.stores?.map((store: any) => {
+    return store.store.name;
+  });
+
   return (
-    <Card className="group last:mb-0 flex flex-col my-4 mx-1 bg-secondary rounded-xl hover:rounded-b-none border-none min-w-[270px] max-w-[400px] hover:scale-110 transition-transform">
+    <Card className="group last:mb-0 flex flex-1 flex-col my-4 mx-1 bg-secondary rounded-xl overflow-visible hover:rounded-b-none border-none min-w-[270px] max-w-[400px] hover:scale-110 hover:after:transition-none transition-transform">
       {game.background_image && (
         <Image
           src={game.background_image}
           alt={game.name}
           height={200}
           width={300}
-          className="rounded-t-xl bg-cover w-full overflow-hidden"
+          className="rounded-t-xl bg-cover w-full"
         />
       )}
 
       <CardContent className="py-3 flex flex-col  pl-2">
         <div className="flex items-center gap-x-2">
-         {stores.map((store: any, key: number) => {
-          if (store === "PlayStation Store") {
-            return <SiPlaystation key={key} size={20} />
-          }
-          if (store === "Xbox Store" || store === 'Xbox 360 Store') {
-            return <SiXbox key={key} size={18} />
-          }
-          if (store === "Steam") {
-            return <SiSteam key={key} size={20} />
-          }
-          if (store === "PC") {
-            return <SiWindows10 key={key} size={20} />
-          }
-          if (store === "Epic Games") {
-            return <SiEpicgames key={key} size={20} />
-          }
-         })}
+          {stores?.map((store: any, key: number) => {
+            if (store === "PlayStation Store") {
+              return <SiPlaystation key={key} size={20} />;
+            }
+            if (store === "Xbox Store" || store === "Xbox 360 Store") {
+              return <SiXbox key={key} size={18} />;
+            }
+            if (store === "Steam") {
+              return <SiSteam key={key} size={20} />;
+            }
+            if (store === "PC") {
+              return <SiWindows10 key={key} size={20} />;
+            }
+            if (store === "Epic Games") {
+              return <SiEpicgames key={key} size={20} />;
+            }
+          })}
         </div>
         <p className="font-bold text-xl mt-2">{game.name}</p>
         <p className="py-2 text-xl">{game.rating}</p>
       </CardContent>
-      <CardFooter className="hidden absolute group-hover:block z-10 -bottom-[118px] w-full bg-inherit rounded-b-xl group-hover:transition-transform">
-        <p>{game.reviews_text_count}</p>
-        <p>{game.reviews_text_count}</p>
-        <p>{game.reviews_text_count}</p>
-        <p>{game.reviews_text_count}</p>
+      <CardFooter className="hidden absolute group-hover:block z-10 -bottom-[118px] w-full bg-inherit rounded-b-xl overflow-hidden">
+        <p className="">{game.reviews_text_count}</p>
+        <p className="">{game.reviews_text_count}</p>
+        <p className="">{game.reviews_text_count}</p>
+        <p className="">{game.reviews_text_count}</p>
       </CardFooter>
     </Card>
   );

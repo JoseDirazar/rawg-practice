@@ -4,15 +4,15 @@ import { Suspense } from "react";
 export default async function Home({
   searchParams,
 }: {
-  searchParams: { search: string };
+  searchParams: { search: string, page: string };
 }) {
   const search = searchParams?.search || ''
-
+  const page: number = Number(searchParams?.page) || 1
 
   return (
     <div className="bg-inherit">
       <Suspense key={search} fallback={<div>Loading...</div>}>
-      <GameCards query={search} />
+      <GameCards query={search} page={page} />
 
       </Suspense>
     </div>

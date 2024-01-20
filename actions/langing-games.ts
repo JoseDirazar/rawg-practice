@@ -1,13 +1,12 @@
 import { unstable_noStore as noStore } from "next/cache";
 
-export const landingGamesPage = async (slug: string) => {
+export const landingGamesPage = async (slug: string, page: number) => {
     noStore()
-    const safeSlug = slug ? slug : ''
+    const userSearch = slug ? slug : ''
     try {
       const response = await fetch(
-        `https://api.rawg.io/api/games?key=${process.env.NEXT_PUBLIC_API_KEY}&search=${safeSlug}&page_size=24`
+        `https://api.rawg.io/api/games?key=${process.env.NEXT_PUBLIC_API_KEY}&search=${userSearch}&page_size=25&page=${page}`
       ).then((res) => res.json());
-        console.log(response)
       return response.results
     } catch (error) {
      console.log(error)
