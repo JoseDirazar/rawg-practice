@@ -26,7 +26,7 @@ export default function GameCarousel({
       return;
     }
 
-    setCount(api.scrollSnapList().length);
+    setCount(screenshots.length);
     setCurrent(api.selectedScrollSnap() + 1);
 
     api.on("select", () => {
@@ -40,7 +40,7 @@ export default function GameCarousel({
         <CarouselPrevious className="absolute left-0 top-1/2 z-10 hidden group-hover:flex items-center justfy-center bg-white/20 border-none hover:bg-white/50" />
         <CarouselContent className="">
           {screenshots.map((screenshot, index) => (
-            <CarouselItem key={index} className="w-full ">
+            <CarouselItem key={index + screenshot} className="w-full ">
               <Image
                 src={screenshot}
                 alt={screenshot}
