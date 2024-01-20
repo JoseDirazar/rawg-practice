@@ -14,7 +14,7 @@ export default function GameCarousel({
 }: {
   screenshots: string[];
 }) {
-
+    
   return (
     <div className="hidden group-hover:block rounded-t-xl overflow-hidden">
       <Carousel className="w-full ">

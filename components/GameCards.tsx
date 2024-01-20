@@ -4,6 +4,7 @@ import PaginationGames from "./Pagination";
 
 const GameCards = async ({ query, page }: { query: string; page: number }) => {
   let games: any = await landingGamesPage(query, page);
+  let gamesLength = games.length
 
   if (games.length === 0) {
     return (
@@ -15,15 +16,35 @@ const GameCards = async ({ query, page }: { query: string; page: number }) => {
       </div>
     );
   }
-
+  const col1 = games.slice(0, 7)
+  const col2 = games.slice(7, 14)
+  const col3 = games.slice(14, 21)
+  const col4 = games.slice(21, 29)
   return (
     <div className="w-full min-w-[70vh] ">
       <p className=" text-7xl mt-1 font-bold">Top picks</p>
       <PaginationGames page={page} />
-      <div className="flex flex-col flex-wrap gap-x-2 max-h-[270vh]">
-        {games.map((game: any) => (
+      <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-x-2 max-h-[270vh]">
+        <div className="">
+        {col1.map((game: any) => (
           <GameCard key={game.slug} game={game} />
         ))}
+        </div>
+        <div className="">
+        {col2.map((game: any) => (
+          <GameCard key={game.slug} game={game} />
+        ))}
+        </div>
+        <div className="">
+        {col3.map((game: any) => (
+          <GameCard key={game.slug} game={game} />
+        ))}
+        </div>
+        <div className="">
+        {col4.map((game: any) => (
+          <GameCard key={game.slug} game={game} />
+        ))}
+        </div>
       </div>
     </div>
   );
