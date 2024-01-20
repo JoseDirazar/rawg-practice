@@ -20,7 +20,7 @@ const GameCard = ({ game }: { game: any }) => {
   })
   console.log('STORES::',stores)
   return (
-    <Card className="group last:mb-0 flex flex-col my-4 mx-1 bg-secondary rounded-xl border-none max-w-[270px] hover:scale-110 transition-transform">
+    <Card className="group last:mb-0 flex flex-col my-4 mx-1 bg-secondary rounded-xl hover:rounded-b-none border-none min-w-[270px] max-w-[400px] hover:scale-110 transition-transform">
       {game.background_image && (
         <Image
           src={game.background_image}
@@ -54,7 +54,7 @@ const GameCard = ({ game }: { game: any }) => {
         <p className="font-bold text-xl mt-2">{game.name}</p>
         <p className="py-2 text-xl">{game.rating}</p>
       </CardContent>
-      <CardFooter className="hidden group-hover:block bg-purple-500 group-hover:animate-accordion-down group-hover:transition-transform transform-gpu">
+      <CardFooter className="hidden absolute group-hover:block z-10 -bottom-[118px] w-full bg-inherit rounded-b-xl group-hover:transition-transform">
         <p>{game.reviews_text_count}</p>
         <p>{game.reviews_text_count}</p>
         <p>{game.reviews_text_count}</p>

@@ -18,7 +18,7 @@ const GameCards = async ({query}: {query: string}) => {
   return (
     <div className="w-auto">
       <p className=" text-7xl mt-1 font-bold">Top picks</p>
-      <div className="flex flex-col flex-wrap w-full max-w-full max-h-[210vh] gap-x-2">
+      <div className="flex flex-col flex-wrap w-full max-w-full max-h-[240vh] gap-x-2 overflow-auto">
 
           {games.map((game: any) => (
               <GameCard key={game.slug} game={game} />
